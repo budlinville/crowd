@@ -5,7 +5,9 @@ import React, { Component } from "react";
 import {
 	ViroARScene,
 	ViroMaterials,
-	ViroSphere
+	ViroSphere,
+	ViroAmbientLight,
+	ViroSpotLight
 } from "react-viro";
 //import GetLocation from "react-native-get-location";
 
@@ -18,6 +20,15 @@ export default class Scene extends Component {
 	render() {
 		return (
 			<ViroARScene>
+				<ViroAmbientLight color={"#aaaaaa"} />
+				<ViroSpotLight
+					innerAngle={5}
+					outerAngle={90}
+					direction={[0,-1,-.2]}
+					position={[0, 3, 1]}
+					color="#ffffff"
+					castsShadow={true}
+				/>
 				<ViroSphere
 					heightSegmentCount={20}
 					widthSegmentCount={20}
@@ -32,7 +43,9 @@ export default class Scene extends Component {
 
 ViroMaterials.createMaterials({
 	red: {
-		diffuseColor: "red",
+		lightingModel: "Blinn",
+		diffuseTexture: require("./rsc/metal_diff.jpg"),
+		specularTexture: require("./rsc/metal_spec.jpg")
 	},
 });
 

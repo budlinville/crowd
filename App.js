@@ -4,9 +4,9 @@ import { ViroARSceneNavigator } from "react-viro";
 import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-Icon.loadFont();
+import InitialARScene from "./js/Scene";
 
-var InitialARScene = require("./js/Scene");
+Icon.loadFont();
 
 const App = () => 
 	<View style={{flex: 1}}>
